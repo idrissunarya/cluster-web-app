@@ -3,9 +3,12 @@ MAINTAINER Cloud App Developer Ltd
 
 ENV PYTHONUNBUFFERED 1
 
-COPY ./requirements.txt /requirements.txt
-RUN /bin/sh -c pip install -r /requirements.txt
+WORKDIR/home/idris-book/workspace/applications/cluster/cluster-web-app
 
-RUN mkdir /django_app
-WORKDIR /django_app
-COPY . /django_app
+ADD requirements.txt ./
+
+RUN pip install --no-cache-dir -r requirements.txt
+
+ADD . .
+
+RUN django-admin startproject example99
